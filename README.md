@@ -10,9 +10,13 @@ Si vous voulez utiliser l'application vous pouvez d'abord récupérer l'applicat
 
 Ensuite vous pouvez lancer les commandes suivantes
 
+```
  npm install
  bower update
- 
+```
+
 Le projet utilise `gulp` donc pour lancer l'application, vous pouvez utiliser la commande
 
+```
  gulp serve
+```
