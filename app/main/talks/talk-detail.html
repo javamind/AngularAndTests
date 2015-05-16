@@ -1,0 +1,159 @@
+<navbar pageinfo="talk.pageinfo"></navbar>
+
+<md-content class="dm-content">
+
+    <div layout="row" layout-wrap>
+
+        <div flex-gt-sm="70">
+            <form name="talkForm">
+                <div layout="row" layout-wrap>
+                    <div flex>&nbsp;</div>
+                    <div flex="10">
+                        <talk-img-format format="talk.selectedTalk.format" required></talk-img-format>
+                    </div>
+                </div>
+
+                <md-input-container>
+                    <label>Title</label>
+                    <input ng-model="talk.selectedTalk.title" class="md-display-1" required>
+                </md-input-container>
+
+                <div layout="row" layout-wrap>
+
+                    <md-input-container flex>
+                        <label>Start date</label>
+                        <input type="datetime" ng-model="talk.selectedTalk.start" required>
+                    </md-input-container>
+                    <md-input-container flex>
+                        <label>End date</label>
+                        <input type="datetime" ng-model="talk.selectedTalk.end" required>
+                    </md-input-container>
+
+                </div>
+
+                <md-input-container flex>
+                    <label>Summary</label>
+                    <textarea ng-model="talk.selectedTalk.summary" columns="1" md-maxlength="250" required></textarea>
+                </md-input-container>
+
+
+                <md-input-container flex>
+                    <label>Description</label>
+                    <textarea ng-model="talk.selectedTalk.description" columns="1" md-maxlength="1500"
+                              required></textarea>
+                </md-input-container>
+
+                <md-input-container flex>
+                    <label>Idea for now</label>
+                    <textarea ng-model="talk.selectedTalk.ideaForNow" columns="1" md-maxlength="250"
+                              required></textarea>
+                </md-input-container>
+
+                <md-content layout-padding layout="row" layout-sm="column" layout-align="space-between start">
+                    <div>
+                        <span class="md-caption dm-talk-caption">Type</span><br>
+                        <md-select placeholder="Type" ng-model="talk.selectedTalk.format" class="dm-select">
+                            <md-option value="Keynote">Keynote</md-option>
+                            <md-option value="Talk">Talk</md-option>
+                            <md-option value="Workshop">Workshop</md-option>
+                        </md-select>
+                    </div>
+                    <div>
+                        <span class="md-caption dm-talk-caption">Level</span><br>
+                        <md-select placeholder="Level" ng-model="talk.selectedTalk.level" class="dm-select">
+                            <md-option value="Beginner">Beginner</md-option>
+                            <md-option value="Experienced">Experienced</md-option>
+                        </md-select>
+                    </div>
+                    <div>
+                        <span class="md-caption dm-talk-caption">Language</span><br>
+                        <md-select placeholder="Language" ng-model="talk.selectedTalk.language" class="dm-select">
+                            <md-option value="fr">Français</md-option>
+                            <md-option value="en">English</md-option>
+                        </md-select>
+                    </div>
+                    <div>
+                        <span class="md-caption dm-talk-caption">Room</span><br>
+                        <md-select placeholder="Room" ng-model="talk.selectedTalk.room" class="dm-select">
+                            <md-option value="Grand Amphi">Grand Amphi</md-option>
+                            <md-option value="Petit Amphi">Petit Amphi</md-option>
+                            <md-option value="Gosling">Gosling</md-option>
+                            <md-option value="Lovelace">Lovelace</md-option>
+                            <md-option value="Nonaka">Nonaka</md-option>
+                            <md-option value="Dijkstra">Dijkstra</md-option>
+                        </md-select>
+                    </div>
+
+                    <div layout="row" layout-align="end start">
+                        <md-button class="md-fab" aria-label="Save talk"
+                                   ng-disabled="!talkForm.$valid || !talkForm.$dirty"
+                                   ng-click="talk.saveTalk()">
+                            <md-icon md-svg-icon="img/icons/ic_save.svg" aria-label="Save talk"></md-icon>
+                        </md-button>
+                    </div>
+                </md-content>
+            </form>
+        </div>
+
+        <div flex-gt-sm="30" class="dm-content" layout-fill>
+            <p>&nbsp;</p>
+
+            <md-content>
+                <md-list>
+                    <md-subheader class="md-no-sticky">
+                        {{talk.speakers.length}} speakers
+                    </md-subheader>
+
+                    <md-list-item class="md-1-line" ng-repeat="speaker in talk.speakers"
+                                  ng-click="talk.selectedSpeaker = speaker">
+                        <img ng-src="{{speaker.urlimage}}" class="md-avatar"
+                             alt="{{speaker.lastname}} {{speaker.firstname}}"/>
+
+                        <div class="md-list-item-text">
+                            <h3>{{speaker.lastname}} {{speaker.firstname}}</h3>
+                        </div>
+                    </md-list-item>
+
+                </md-list>
+                <md-content layout layout-align="end start" ng-if="!talk.selectedSpeaker">
+                    <md-button class="md-fab" aria-label="Save talk" ng-click="talk.selectedSpeaker = {}">
+                        <md-icon md-svg-icon="img/icons/ic_add.svg" aria-label="Add talk"></md-icon>
+                    </md-button>
+                </md-content>
+            </md-content>
+
+            <br>
+            <md-whiteframe class="md-whiteframe-z2 dm-content" layout="column" ng-if="talk.selectedSpeaker">
+                <form name="speakerForm">
+                    <h4>Speaker</h4>
+                    <md-input-container>
+                        <label>Firstname</label>
+                        <input ng-model="talk.selectedSpeaker.firstname">
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Lastname</label>
+                        <input ng-model="talk.selectedSpeaker.lastname">
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Gravatar</label>
+                        <input ng-model="talk.selectedSpeaker.urlimage">
+                    </md-input-container>
+                    <div layout="row" layout-align="end start">
+                        <md-button class="md-fab" aria-label="Save speaker"  ng-disabled="!speakerForm.$valid || !speakerForm.$dirty"
+                                   ng-click="talk.saveSpeaker(talk.selectedSpeaker)">
+                            <md-icon md-svg-icon="img/icons/ic_save.svg" aria-label="Save speaker"></md-icon>
+                        </md-button>
+                        <md-button class="md-fab" aria-label="Remove speaker" ng-if="talk.selectedSpeaker.id"
+                                   ng-click="talk.removeSpeaker(talk.selectedSpeaker)">
+                            <md-icon md-svg-icon="img/icons/ic_delete.svg" aria-label="Remove speaker"></md-icon>
+                        </md-button>
+                        <md-button class="md-fab" aria-label="Cancel"
+                                   ng-click="talk.cancelSpeakerEdition()">
+                            <md-icon md-svg-icon="img/icons/ic_cancel.svg" aria-label="Cancel"></md-icon>
+                        </md-button>
+                    </div>
+                </form>
+            </md-whiteframe>
+        </div>
+    </div>
+</md-content>

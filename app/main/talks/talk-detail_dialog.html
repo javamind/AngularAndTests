@@ -1,0 +1,66 @@
+
+<md-dialog aria-label="Detail talk">
+    <md-dialog-content class="sticky-container">
+        <div layout="row" layout-wrap>
+            <div flex>
+                <h2>{{talk.title}}</h2>
+            </div>
+            <div flex="10">
+                <talk-img-format format="talk.format"></talk-img-format>
+            </div>
+        </div>
+        <md-subheader>
+            <talk-date start="talk.start" end="talk.end"></talk-date>
+        </md-subheader>
+        <div>
+
+            <md-chips>
+                <md-chip>{{talk.room}}</md-chip>
+                <md-chip ng-show="talk.level">{{talk.level}}</md-chip>
+                <md-chip ng-show="talk.language">{{talk.language}}</md-chip>
+            </md-chips>
+
+            <p>
+                <em>{{talk.summary}}</em>px
+            </p>
+
+            <p>
+                {{talk.description}}
+            </p>
+
+            <p ng-if="talk.ideaForNow">
+                <strong>Idea for now : </strong>{{talk.ideaForNow}}
+            </p>
+
+            <md-content>
+                <md-list>
+                    <md-subheader class="md-no-sticky">
+                        {{talk.speakers.length}} speakers
+                    </md-subheader>
+
+                    <md-list-item class="md-1-line" ng-repeat="speaker in talk.speakers">
+                        <img ng-src="{{speaker.urlimage}}" class="md-avatar"
+                             alt="{{speaker.lastname}} {{speaker.firstname}}"/>
+
+                        <div class="md-list-item-text">
+                            <h3>{{speaker.lastname}} {{speaker.firstname}}</h3>
+                        </div>
+                    </md-list-item>
+
+                </md-list>
+            </md-content>
+
+
+        </div>
+    </md-dialog-content>
+    <div class="md-actions" layout="row">
+        <span flex></span>
+        <md-button ng-click="cancel()" class="md-primary">
+            OK
+        </md-button>
+    </div>
+</md-dialog>
+
+
+
+
