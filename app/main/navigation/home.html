@@ -7,10 +7,10 @@
 
     <md-grid-tile class="dm-gray dm-grid-tile" md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-rowspan-sm="2">
         <md-grid-tile-body class="dm-content">
-            <h2>Angular et les tests</h2>
+            <h2>Les tests en Javascript</h2>
 
             <p>Les tests dans une application Javascript sont importants. Venez découvrir comment en 50 minutes mettre
-                en place votre stratégie de tests d'une application Angular</p>
+                en place votre stratégie de tests</p>
             <a href="http://breizhcamp.org"><img src="img/breizhcamp.png"/></a>
 
             <p><b>10 au 12 juin 2015 - Rennes</b></p>
@@ -43,24 +43,12 @@
         <md-grid-tile-body class="dm-content">
             <p>Le principe est simple, on part d'une application vierge de tests et on les ajoute
             </p>
-            <md-button class="md-fab" aria-label="Talks" ui-sref="talks">
+            <md-button class="md-fab" aria-label="Talks" ui-sref="talks" id="buttonTalk">
                 <md-icon md-svg-src="img/icons/ic_talks.svg"></md-icon>
             </md-button>
             <p>Vous pouvez me suivre sur</p>
-            <md-button class="md-fab md-primary" aria-label="Dev-Mind" ng-click="goToLink('http://dev-mind.fr/')">
-                <md-icon md-svg-src="img/icons/ic_website.svg"></md-icon>
-            </md-button>
-            <md-button class="md-fab md-primary" aria-label="Blog" ng-click="goToLink('http://javamind-fr.blogspot.fr/')">
-                <md-icon md-svg-src="img/icons/ic_blogger.svg"></md-icon>
-            </md-button>
-            <md-button class="md-fab md-primary" aria-label="Twitter" ng-click="goToLink('https://twitter.com/guillaumeehret')">
-                <md-icon md-svg-src="img/icons/ic_twitter.svg"></md-icon>
-            </md-button>
-            <md-button class="md-fab md-primary" aria-label="Google+" ng-click="goToLink('https://plus.google.com/u/0/+GuillaumeEhret')">
-                <md-icon md-svg-src="img/icons/ic_google.svg"></md-icon>
-            </md-button>
-            <md-button class="md-fab md-primary" aria-label="Facebook" ng-click="goToLink('https://www.facebook.com/devmindfr')">
-                <md-icon md-svg-src="img/icons/ic_facebook.svg"></md-icon>
+            <md-button class="md-fab md-primary" ng-repeat="link in links" aria-label="{{link.label}}" ng-click="goToLink(link.link)">
+                <md-icon md-svg-src="img/icons/{{link.icon}}"></md-icon>
             </md-button>
         </md-grid-tile-body>
         <md-grid-tile-footer>

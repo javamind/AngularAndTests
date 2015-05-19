@@ -9,19 +9,14 @@ exports.config = {
 
   // Spec patterns are relative to the current working directly when
   // protractor is called.
-  specs: [
-    'app/bower_components/angular/angular.js',
-    'app/bower_components/angular-animate/angular-animate.js',
-    'app/bower_components/angular-aria/angular-aria.js',
-    'app/bower_components/angular-ui-router/release/angular-ui-router.min.js',
-    'app/bower_components/angular-material/angular-material.min.js',
+//  specs: [
+//    'test/e2e/**/*.js'
+//  ],
 
-    'app/bower_components/angular-mocks/angular-mocks.js',
-
-    'app/main/**/*.js',
-    'app/main/**/*.html',
-    'test/e2e/**/*.js'
-  ],
+  suites:{
+    home : 'test/e2e/home/**/*.spec.js',
+    talks : 'test/e2e/talks/**/*.spec.js'
+  },
 
   // Options to be passed to Jasmine-node.
   jasmineNodeOpts: {
