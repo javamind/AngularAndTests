@@ -1,14 +1,14 @@
 (function () {
   'use strict';
 
-  describe('SpeakerService : ', function () {
+  describe('speakerService : ', function () {
 
     var service, $httpBackend, speaker;
 
     beforeEach(module('at-services'));
 
     beforeEach(inject(function ($injector) {
-      service = $injector.get('SpeakerService');
+      service = $injector.get('speakerService');
       $httpBackend = $injector.get('$httpBackend');
 
       speaker = {

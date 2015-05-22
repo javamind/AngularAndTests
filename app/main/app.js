@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('at-controllers', []);
-  angular.module('at-directives', []);
+  angular.module('at-directives', ['at-templates']);
   angular.module('at-filters', []);
   angular.module('at-services', []);
 
@@ -13,7 +13,8 @@
       'at-controllers',
       'at-directives',
       'at-filters',
-      'at-services'
+      'at-services',
+      'at-templates'
     ]
   );
 

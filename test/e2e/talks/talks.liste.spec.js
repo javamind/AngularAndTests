@@ -15,7 +15,7 @@
     });
 
     it('should filter only keynote if I deselect options for Talks and Workshops', function () {
-      browser.debugger();
+      browser.pause();
       element(by.model('talks.filter.talk')).click();
       element(by.model('talks.filter.workshop')).click();
       expect(element.all(by.repeater('talk in talks.list')).count()).toBe(7);

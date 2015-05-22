@@ -1,14 +1,14 @@
 (function () {
   'use strict';
 
-  describe('TalkService : ', function () {
+  describe('talkService : ', function () {
 
-    var $httpBackend, $service;
+    var $httpBackend, service;
 
     beforeEach(module('at-services'));
 
     beforeEach(inject(function ($injector) {
-      $service = $injector.get('TalkService');
+      service = $injector.get('talkService');
       $httpBackend = $injector.get('$httpBackend');
     }));
 
@@ -34,7 +34,7 @@
 
         $httpBackend.expectGET('/api/talks/1').respond(createTalk(1));
 
-        $service.get("1").then(function(talk){
+        service.get("1").then(function(talk){
           result = talk;
         });
         $httpBackend.flush();
@@ -46,7 +46,7 @@
         var result;
         $httpBackend.expectGET('/api/talks/1sq').respond(404);
 
-        $service.get("1sq").then(function (talk) {
+        service.get("1sq").then(function (talk) {
           result = talk;
         });
         $httpBackend.flush();
@@ -80,7 +80,7 @@
 
       it('should find all the talks, keynotes and workshop', function () {
         var result;
-        $service.getAll(filters).then(function (talks) {
+        service.getAll(filters).then(function (talks) {
           result = talks;
         });
         $httpBackend.flush();
@@ -93,7 +93,7 @@
         filters.talk = false;
         filters.workshop = false;
 
-        $service.getAll(filters).then(function (talks) {
+        service.getAll(filters).then(function (talks) {
           result = talks;
         });
         $httpBackend.flush();
@@ -107,7 +107,7 @@
         filters.talk = false;
         filters.keynote = false;
 
-        $service.getAll(filters).then(function (talks) {
+        service.getAll(filters).then(function (talks) {
           result = talks;
         });
         $httpBackend.flush();
@@ -134,7 +134,7 @@
               ]}
           });
 
-        $service.getTalkSpeakers(1).then(function (data) {
+        service.getTalkSpeakers(1).then(function (data) {
           result = data;
         });
 
@@ -147,7 +147,7 @@
         var result;
         $httpBackend.expectGET('/api/talks/1/speakers').respond([]);
 
-        $service.getTalkSpeakers(1).then(function (data) {
+        service.getTalkSpeakers(1).then(function (data) {
           result = data;
         });
 
@@ -165,7 +165,7 @@
         talk = createTalk(undefined, 'Talk', 'My talk');
         $httpBackend.expectPOST('/api/talks', talk).respond(201);
 
-        $service.save(talk).then(function (data) {
+        service.save(talk).then(function (data) {
           result = data;
         });
         $httpBackend.flush();
@@ -177,7 +177,7 @@
         talk = createTalk(1, 'Talk', 'My talk');
         $httpBackend.expectPUT('/api/talks/1', talk).respond(201);
 
-        $service.save(talk).then(function (data) {
+        service.save(talk).then(function (data) {
           result = data;
         });
         $httpBackend.flush();

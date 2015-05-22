@@ -5,7 +5,7 @@
   'use strict'
 
   describe('TalkListCtrl', function () {
-    var $controller, $location, $mdDialog, TalkService;
+    var $controller, $location, $mdDialog, talkService;
 
     beforeEach(module('at-controllers', 'ngMaterial'));
 
@@ -13,9 +13,9 @@
       $location = $injector.get('$location');
       $mdDialog = $injector.get('$mdDialog');
 
-      //We could load module at-services but I prefer remain isolated. But I have to stub object TalkService. We can create a mock object
+      //We could load module at-services but I prefer remain isolated. But I have to stub object talkService. We can create a mock object
       //If we have a lot of promise like in the file talk-detail.spec.js we can use our own class
-      TalkService = {
+      talkService = {
         getAll: function () {
           return {
             then: function (callback) {
@@ -33,7 +33,7 @@
       $controller = $injector.get('$controller')('TalkListCtrl', {
         $mdDialog: $mdDialog,
         $location: $location,
-        TalkService: TalkService
+        talkService: talkService
       });
 
     }));

@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('at-services').factory('TalkService', ['$http', function ($http) {
+  angular.module('at-services').factory('talkService', ['$http', function ($http) {
     'use strict';
 
 

@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('at-services').factory('SpeakerService', ['$http', function ($http) {
+  angular.module('at-services').factory('speakerService', ['$http', function ($http) {
     'use strict';
 
 
@@ -10,7 +10,7 @@
      */
     function save(speaker, talk) {
 
-      speaker.talk = talk._links.self.href;
+      speaker.talk = talk._links ? talk._links.self.href : undefined;
 
       if (!speaker.urlimage) {
         speaker.urlimage = 'https://sigil.cupcake.io/' + speaker.firstname + speaker.lastname;

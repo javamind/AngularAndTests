@@ -1,14 +1,14 @@
 (function () {
   'use strict';
 
-  angular.module('at-controllers').controller('TalkDetailCtrl', ['$stateParams', '$scope', 'TalkService','SpeakerService', function ($stateParams, $scope, TalkService, SpeakerService) {
+  angular.module('at-controllers').controller('TalkDetailCtrl', ['$stateParams', '$scope', 'talkService','speakerService', function ($stateParams, $scope, talkService, speakerService) {
     'use strict';
 
     var ctrl = this;
 
     //Panel for talk
     ctrl.refreshTalk = function () {
-      TalkService.get($stateParams.id).then(function (talk){
+      talkService.get($stateParams.id).then(function (talk){
         ctrl.selectedTalk = talk;
         $scope.talkForm.$setPristine();
         ctrl.refreshSpeaker();
@@ -16,22 +16,21 @@
     };
 
     ctrl.saveTalk = function () {
-      TalkService.save(ctrl.selectedTalk).then(ctrl.refreshTalk);
+      talkService.save(ctrl.selectedTalk).then(ctrl.refreshTalk);
     };
-
 
     //Panel for speaker
     ctrl.refreshSpeaker = function () {
-      TalkService.getTalkSpeakers($stateParams.id).then(function (speakers){
+      talkService.getTalkSpeakers($stateParams.id).then(function (speakers){
         ctrl.speakers = speakers;
       });
     };
     ctrl.saveSpeaker = function (speaker) {
-      SpeakerService.save(speaker, ctrl.selectedTalk).then(ctrl.refreshSpeaker);
+      speakerService.save(speaker, ctrl.selectedTalk).then(ctrl.refreshSpeaker);
       delete ctrl.selectedSpeaker;
     }
     ctrl.removeSpeaker = function (speaker) {
-      SpeakerService.remove(speaker).then(ctrl.refreshSpeaker);
+      speakerService.remove(speaker).then(ctrl.refreshSpeaker);
       delete ctrl.selectedSpeaker;
     }
     ctrl.cancelSpeakerEdition = function () {

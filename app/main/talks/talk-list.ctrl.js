@@ -1,14 +1,14 @@
 (function () {
   'use strict';
 
-  angular.module('at-controllers').controller('TalkListCtrl', ['$mdDialog', '$location', 'TalkService', function ($mdDialog, $location, TalkService) {
+  angular.module('at-controllers').controller('TalkListCtrl', ['$mdDialog', '$location', 'talkService', function ($mdDialog, $location, talkService) {
     'use strict';
 
     var ctrl = this;
 
     //Load the talks
     ctrl.refresh = function () {
-      TalkService.getAll(ctrl.filter).then(function(data){
+      talkService.getAll(ctrl.filter).then(function(data){
         ctrl.list = data;
       });
     }
@@ -37,7 +37,7 @@
             $mdDialog.cancel();
           };
           $scope.talk = ctrl.selectedTalk;
-          TalkService.getTalkSpeakers(ctrl.selectedTalk.id).then(function (data) {
+          talkService.getTalkSpeakers(ctrl.selectedTalk.id).then(function (data) {
             $scope.talk.speakers = data;
           });
         },
