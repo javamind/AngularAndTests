@@ -1,5 +1,7 @@
 /**
- * Test d'un controller utilisant $scope
+ * Created by Dev-Mind
+ * *******************************
+ * Le but de ce test est de montrer un test simple d'un controller utilisant $scope
  */
 (function () {
   'use strict'

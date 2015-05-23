@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('at-controllers').controller('TalkListCtrl', ['$mdDialog', '$location', 'talkService', function ($mdDialog, $location, talkService) {
+  angular.module('at-controllers').controller('TalkListCtrl', ['$mdDialog', '$location', 'talkService', 'TalkDetailDialogCtrl', function ($mdDialog, $location, talkService, TalkDetailDialogCtrl) {
     'use strict';
 
     var ctrl = this;
@@ -32,17 +32,12 @@
     ctrl.previewTalk = function (talk, event) {
       ctrl.selectedTalk = talk;
       $mdDialog.show({
-        controller: function ($mdDialog, $scope) {
-          $scope.cancel = function () {
-            $mdDialog.cancel();
-          };
-          $scope.talk = ctrl.selectedTalk;
-          talkService.getTalkSpeakers(ctrl.selectedTalk.id).then(function (data) {
-            $scope.talk.speakers = data;
-          });
-        },
-        templateUrl: 'talks/talk-detail_dialog.html',
-        targetEvent: event
+        controller: TalkDetailDialogCtrl,
+        templateUrl: 'talks/dialog/talk-detail--dialog.html',
+        targetEvent: event,
+        locals: {
+          talk: ctrl.selectedTalk
+        }
       });
     };
   }]);

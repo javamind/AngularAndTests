@@ -1,5 +1,8 @@
 /**
- * Test d'une directive utilisant un template de page (templateURL)
+ * Created by Dev-Mind
+ * *******************************
+ * Test d'une directive utilisant un template de page (templateURL). Ce template doit par exemple
+ * être chargé en JS via Html2JS ==> module at-templates
  */
 (function () {
   'use strict'

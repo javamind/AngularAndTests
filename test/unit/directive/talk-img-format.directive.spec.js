@@ -1,5 +1,7 @@
 /**
- * Created by ehret_g on 12/05/15.
+ * Created by Dev-Mind
+ * *******************************
+ * Test d'une directive simple
  */
 (function () {
   'use strict'

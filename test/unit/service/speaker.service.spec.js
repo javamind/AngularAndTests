@@ -1,3 +1,9 @@
+/**
+ * Created by Dev-Mind
+ * *******************************
+ * Test d'un service Angular qui renvoie des promesses au controller associé. Montre l'utilisation
+ * de $httpBackend
+ */
 (function () {
   'use strict';
 

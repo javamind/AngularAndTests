@@ -17,7 +17,7 @@
             <md-chips>
                 <md-chip>{{talk.room}}</md-chip>
                 <md-chip ng-show="talk.level">{{talk.level}}</md-chip>
-                <md-chip ng-show="talk.language">{{talk.language}}</md-chip>
+                <md-chip ng-show="talk.language">{{talk.language | language}}</md-chip>
             </md-chips>
 
             <p>

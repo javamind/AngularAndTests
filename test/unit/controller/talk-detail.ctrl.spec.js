@@ -1,50 +1,33 @@
 /**
- * Created by ehret_g on 14/05/15.
+ * Created by Dev-Mind
+ * *******************************
+ * Dans ce test on utilise $q.when() pour mocker nos services ou tout au moins leurs méthodes
  */
 (function () {
   'use strict'
 
   describe('TalkDetailCtrl : ', function () {
-    var $scope, $controller, talkService, speakerService;
+    var $scope, $controller, talkService, speakerService, $q;
 
     beforeEach(module('at-controllers'));
 
-    /**
-     * to prevent to use an external lib I use my own promise mock
-     */
-    function Mock(response) {
-      var mock = this;
-      mock.response = response;
-      mock.$promise = function () {
-        return {
-          then: function (callback) {
-            callback(mock.response);
-          }
-        }
-      }
-    }
-
     beforeEach(inject(function ($injector) {
       $scope = $injector.get('$rootScope').$new();
+      $q = $injector.get('$q');
 
-      //We could load module at-services but I prefer remain isolated. But I have to stub object talkService. We can create simple mock objects
+      //Our services return Javascript promises. We use $q to simulate the behavior
       speakerService = {
-        save: function(){},
-        remove: function(){}
+        save: function(){ return $q.when({})},
+        remove: function(){ return $q.when({})}
       }
-      spyOn(speakerService, 'save').and.callFake(new Mock().$promise);
-      spyOn(speakerService, 'remove').and.callFake(new Mock().$promise);
 
       talkService = {
-        get: function(){},
-        getTalkSpeakers: function(){},
-        save: function(){}
+        get: function(){ return $q.when({id: 1, title: 'my talk'})},
+        getTalkSpeakers: function(){ return $q.when([
+          {id: 1, firstname: 'Guillaume' }
+        ])},
+        save: function(){ return $q.when({})}
       };
-      spyOn(talkService, 'get').and.callFake(new Mock({id: 1, title: 'my talk'}).$promise);
-      spyOn(talkService, 'getTalkSpeakers').and.callFake(new Mock([
-        {id: 1, firstname: 'Guillaume' }
-      ]).$promise);
-      spyOn(talkService, 'save').and.callFake(new Mock().$promise);
 
       //When the data is refreshed we reset the talkForm. We use a mock
       $scope.talkForm = { $setPristine: jasmine.createSpy('$setPristine')};
@@ -56,6 +39,7 @@
         speakerService: speakerService
       });
 
+      $scope.$digest();
     }));
 
     it('should have its name in pageinfo', function () {
@@ -78,6 +62,7 @@
         $scope.talkForm.$setPristine.calls.reset();
 
         $controller.refreshTalk();
+        $scope.$digest();
 
         expect($scope.talkForm.$setPristine).toHaveBeenCalled();
       });
@@ -94,6 +79,7 @@
       it('should save talk and refresh form', function () {
         spyOn($controller, 'refreshTalk')
         $controller.saveTalk();
+        $scope.$digest();
         expect($controller.refreshTalk).toHaveBeenCalled();
       });
 
@@ -110,10 +96,10 @@
         };
 
         $controller.saveSpeaker($controller.selectedSpeaker);
+        $scope.$digest();
 
-        expect(speakerService.save).toHaveBeenCalled();
+        //After saving the scope is cleaned and speakear is refreshed
         expect($controller.refreshSpeaker).toHaveBeenCalled();
-        //After saving the scope is cleaned
         expect($controller.selectedSpeaker).toBeUndefined();
       });
 
@@ -125,10 +111,10 @@
         };
 
         $controller.removeSpeaker($controller.selectedSpeaker);
+        $scope.$digest();
 
-        expect(speakerService.remove).toHaveBeenCalled();
+        //After saving the scope is cleaned and speakear is refreshed
         expect($controller.refreshSpeaker).toHaveBeenCalled();
-        //After saving the scope is cleaned
         expect($controller.selectedSpeaker).toBeUndefined();
       });
 

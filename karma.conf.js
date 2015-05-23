@@ -1,5 +1,5 @@
 // Karma configuration
-// Generated on Sat May 16 2015 18:42:28 GMT+0200 (CEST)
+// Generated on Sat May 23 2015 15:46:04 GMT+0200 (CEST)
 
 module.exports = function(config) {
   config.set({
@@ -34,10 +34,12 @@ module.exports = function(config) {
     exclude: [
     ],
 
+
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'app/main/**/*.html': ['ng-html2js']
+      'app/main/**/*.html': ['ng-html2js'],
+      'app/main/**/*.js': ['coverage']
     },
 
     ngHtml2JsPreprocessor: {
@@ -48,7 +50,12 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['progress', 'coverage'],
+
+    coverageReporter: {
+      type: 'lcov',
+      dir: '.tmp/reports/coverage/'
+    },
 
     // web server port
     port: 9876,

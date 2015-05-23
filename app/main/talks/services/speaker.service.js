@@ -22,7 +22,6 @@
       else{
         return $http.post('/api/speakers', speaker);
       }
-
     }
 
     /**

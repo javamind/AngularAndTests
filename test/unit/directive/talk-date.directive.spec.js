@@ -1,3 +1,8 @@
+/**
+ * Created by Dev-Mind
+ * *******************************
+ * Test d'une directive simple
+ */
 (function () {
   'use strict'
 
