@@ -1,4 +1,4 @@
-==Speaker notes==
+# Speaker notes
 
 *home.ctrl.spec.js*
 
