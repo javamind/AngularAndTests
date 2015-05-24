@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('at-controllers').controller('TalkDetailDialogCtrl', ['$mdDialog', '$scope', 'talk', 'talkService', function ($mdDialog, $scope, talk, talkService) {
+  angular.module('at-controllers').controller('TalkDetailDialogCtrl', function ($mdDialog, $scope, talk, talkService) {
     'use strict';
 
     $scope.cancel = function () {
@@ -14,6 +14,6 @@
       $scope.talk.speakers = data;
     });
 
-  }]);
+  });
 
 })();

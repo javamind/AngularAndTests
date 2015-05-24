@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('at-services').factory('speakerService', ['$http', function ($http) {
+  angular.module('at-services').factory('speakerService', function ($http) {
     'use strict';
 
 
@@ -36,6 +36,6 @@
       remove: remove
     }
 
-  }]);
+  });
 
 })();

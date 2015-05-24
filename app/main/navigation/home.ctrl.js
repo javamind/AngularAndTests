@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('at-controllers').controller('HomeCtrl', ['$scope', '$window', function ($scope, $window) {
+  angular.module('at-controllers').controller('HomeCtrl', function ($scope, $window) {
     'use strict';
 
     $scope.pageinfo = { name: 'home'};
@@ -21,6 +21,6 @@
       {label : 'Google+', link : 'https://plus.google.com/u/0/+GuillaumeEhret', icon : 'ic_google.svg' },
       {label : 'Facebook', link : 'https://www.facebook.com/devmindfr', icon : 'ic_facebook.svg' }
     ];
-  }]);
+  });
 
 })();

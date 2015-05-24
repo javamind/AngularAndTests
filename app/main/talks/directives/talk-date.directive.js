@@ -4,7 +4,7 @@
   /**
    * This directive is used to define a nav bar in the pages
    */
-  angular.module('at-directives').directive('talkDate', ['$filter', function ($filter) {
+  angular.module('at-directives').directive('talkDate', function ($filter) {
     'use strict';
 
     return {
@@ -21,6 +21,6 @@
       }
     };
 
-  }]);
+  });
 
 })();

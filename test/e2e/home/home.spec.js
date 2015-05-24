@@ -1,10 +1,10 @@
 /**
- * Created by ehret_g on 17/05/15.
+ * Created By Dev-Mind
  */
 (function () {
   'use strict'
 
-  describe('homepage', function () {
+  describe('Homepage', function () {
 
     beforeEach(function () {
       browser.get('http://localhost:3000/home');
@@ -15,20 +15,20 @@
     });
 
     it('should find 5 links', function () {
-      var links = element.all(by.repeater('link in links'));
+      var links = element.all(By.repeater('link in links'));
       expect(links.count()).toBe(5);
       expect(links.getAttribute("aria-label")).toEqual([ 'Dev-Mind', 'Blog', 'Twitter', 'Google+', 'Facebook' ]);
     });
 
     it('should open talk list', function () {
-      element(by.id('buttonTalk')).click();
+      element(By.id('buttonTalk')).click();
       expect(browser.getCurrentUrl()).toBe('http://localhost:3000/talk');
     });
 
     describe('navbar ', function () {
 
       it('should contain 2 buttons home and talk', function () {
-        var buttons = element.all(by.className('dm-toolbar')).getAttribute('md-svg-icon');
+        var buttons = element.all(By.className('dm-toolbar')).getAttribute('md-svg-icon');
 
         expect(buttons.count()).toBe(2);
 
@@ -38,11 +38,11 @@
       });
 
       it('should highlight the button Home', function () {
-        expect(element(by.className('dm-svg-active')).getAttribute('md-svg-icon')).toContain('home');
+        expect(element(By.className('dm-svg-active')).getAttribute('md-svg-icon')).toContain('home');
       });
 
       it('should not highlight the button Talk', function () {
-        expect(element(by.className('dm-svg-inactive')).getAttribute('md-svg-icon')).toContain('talk');
+        expect(element(By.className('dm-svg-inactive')).getAttribute('md-svg-icon')).toContain('talk');
       });
 
     })

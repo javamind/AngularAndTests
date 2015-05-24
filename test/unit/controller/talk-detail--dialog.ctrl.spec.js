@@ -1,5 +1,7 @@
 /**
- * Created by ehret_g on 23/05/15.
+ * Created by Dev-Mind
+ * *******************************
+ * Controlleur utilisé dans une boite de dialogue
  */
 (function () {
   'use strict'

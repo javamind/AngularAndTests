@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('at').config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
+  angular.module('at').config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     'use strict';
 
     $locationProvider.html5Mode(true);
@@ -27,6 +27,6 @@
         templateUrl: 'talks/talk-list.html'
 
       });
-  }]);
+  });
 
 })();

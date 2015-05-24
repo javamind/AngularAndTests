@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('at-services').factory('talkService', ['$http', function ($http) {
+  angular.module('at-services').factory('talkService', function ($http) {
     'use strict';
 
 
@@ -60,6 +60,6 @@
       getTalkSpeakers :getTalkSpeakers,
       save : save
     }
-  }]);
+  });
 
 })();

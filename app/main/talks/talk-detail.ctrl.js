@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('at-controllers').controller('TalkDetailCtrl', ['$stateParams', '$scope', 'talkService','speakerService', function ($stateParams, $scope, talkService, speakerService) {
+  angular.module('at-controllers').controller('TalkDetailCtrl', function ($stateParams, $scope, talkService, speakerService) {
     'use strict';
 
     var ctrl = this;
@@ -42,6 +42,6 @@
     ctrl.refreshTalk();
 
 
-  }]);
+  });
 
 })();

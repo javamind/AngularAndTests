@@ -18,10 +18,10 @@
     ]
   );
 
-  angular.module('at').config(['$mdThemingProvider',function($mdThemingProvider) {
+  angular.module('at').config(function($mdThemingProvider) {
     $mdThemingProvider.theme('default')
       .primaryPalette('blue-grey')
       .accentPalette('pink');
-  }]);
+  });
 
 })();
