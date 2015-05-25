@@ -6,7 +6,7 @@
 (function () {
   'use strict'
 
-  ddescribe('Talk', function () {
+  describe('Talk', function () {
 
     beforeEach(function () {
       browser.get('http://localhost:3000/talk/1');
