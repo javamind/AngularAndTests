@@ -16,7 +16,6 @@
     "gulp-less": "3.0.0",
     "gulp-livereload": "3.8.0",
     "gulp-ng-annotate": "0.5.2",
-    "gulp-ng-html2js": "^0.2.0",
     "gulp-replace": "0.5.3",
     "gulp-rimraf": "0.1.0",
     "gulp-sourcemaps": "1.5.1",

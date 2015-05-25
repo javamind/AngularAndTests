@@ -11,7 +11,6 @@ var rimraf = require('gulp-rimraf');
 var uglify = require('gulp-uglify');
 var util = require('gulp-util');
 var sourcemaps = require('gulp-sourcemaps');
-var html2js = require('gulp-ng-html2js');
 
 var app = {
   basedir :'.tmp',
@@ -30,9 +29,6 @@ var app = {
   ],
   libcss  : [
     'app/bower_components/angular-material/angular-material.min.css'
-  ],
-  templates :[
-    'app/main/**/*.html'
   ]
 };
 
@@ -99,16 +95,10 @@ gulp.task('lib', function () {
     .pipe(gulp.dest(app.basedir + '/css'))
 });
 
-/** S
+/**
  * Concats our js files
  */
-gulp.task('js', ['lib'], function () {
-  gulp.src(app.templates)
-    .pipe(html2js({
-      moduleName: 'at-templates'
-    }))
-    .pipe(concat('application.tpl.min.js'))
-    .pipe(gulp.dest(app.basedir));
+gulp.task('js', ['lib', 'html'], function () {
 
   gulp.src(app.js)
     .pipe(jshint())
@@ -118,7 +108,8 @@ gulp.task('js', ['lib'], function () {
     }))
     .pipe(concat('application.min.js'))
     .pipe(uglify())
-    .pipe(gulp.dest(app.basedir));
+    .pipe(gulp.dest(app.basedir))
+    .pipe(browserSync.reload({stream: true}));;
 });
 
 // Launches static server
