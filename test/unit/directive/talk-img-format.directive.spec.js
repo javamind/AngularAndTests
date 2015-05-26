@@ -10,7 +10,7 @@
 
     var $scope, $compile;
 
-    beforeEach(module('at-directives'));
+    beforeEach(module('at-directives', 'at-templates'));
 
     beforeEach(inject(function(_$rootScope_, _$compile_){
       $scope = _$rootScope_.$new();
