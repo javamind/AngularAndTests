@@ -8,7 +8,11 @@
     'use strict';
 
     return {
-      templateUrl: 'talks/directives/talk-img-format.directive.html',
+      template:
+        '<md-button class="md-icon-button" aria-label="{{format}}">' +
+          '<md-tooltip>{{format}}</md-tooltip>' +
+          '<md-icon md-svg-src="{{imgsrc}}" class="md-avatar dm-talk-img" alt="{{format}}"></md-icon>'+
+        '</md-button>',
       restrict: 'E',
       scope: {
         format: '='

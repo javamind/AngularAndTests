@@ -11,7 +11,7 @@
 
     var $compile, $scope;
 
-    beforeEach(module('at-directives', 'at-templates'));
+    beforeEach(module('at-directives', 'at-filters'));
 
     beforeEach(inject(function(_$compile_, _$rootScope_){
       $compile = _$compile_;

@@ -99,8 +99,8 @@ describe('Pour aller plus loin', function () {
 'app/bower_components/angular/angular.js',
         'app/bower_components/angular-animate/angular-animate.js',
         'app/bower_components/angular-aria/angular-aria.js',
-        'app/bower_components/angular-ui-router/release/angular-ui-router.min.js',
-        'app/bower_components/angular-material/angular-material.min.js',
+        'app/bower_components/angular-ui-router/release/angular-ui-router.js',
+        'app/bower_components/angular-material/angular-material.js',
 
         'app/bower_components/angular-mocks/angular-mocks.js',
 
@@ -111,25 +111,10 @@ describe('Pour aller plus loin', function () {
 * c2 *
 
 ```
-'app/main/**/*.html': ['ng-html2js']
-```
-
-* c3 *
-
-```
-ngHtml2JsPreprocessor: {
-      stripPrefix: 'app/main/',
-      moduleName: 'at-templates'
-    },
-```
-
-* c4 *
-
-```
 'app/main/**/*.js': ['coverage']
 ```
 
-* c5 *
+* c3 *
 
 ```
 coverageReporter: {
